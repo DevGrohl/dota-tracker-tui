@@ -2,6 +2,7 @@ package data
 
 import (
 	"database/sql"
+	"log"
 	"os"
 
 	_ "github.com/lib/pq"
@@ -17,6 +18,8 @@ func MakeMigration(db *sql.DB) error {
 	if err != nil {
 		return err
 	}
+
+	log.Output(0, string(b))
 
 	rows, err := db.Query(string(b))
 	if err != nil {
